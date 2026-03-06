@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agronomía Inteligente</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(120deg,#134E5E,#71B280);
+color:white;
+text-align:center;
+padding:30px;
+}
+
+h1{
+font-size:50px;
+margin-bottom:10px;
+}
+
+h2{
+margin-top:40px;
+}
+
+.card{
+background:white;
+color:black;
+border-radius:15px;
+padding:25px;
+margin:auto;
+width:80%;
+max-width:600px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+margin-top:30px;
+}
+
+button{
+background:#2e7d32;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌱 Agricultura Inteligente</h1>
+<p>Datos de producción agrícola</p>
+
+<div class="card">
+
+<h2>Producción de cultivos</h2>
+
+<canvas id="grafica"></canvas>
+
+</div>
+
+<div class="card">
+
+<h2>Simulación de riego</h2>
+
+<p id="agua">Nivel de agua: 50%</p>
+
+<button onclick="regar()">Regar cultivo</button>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('grafica');
+
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['Maíz','Trigo','Frijol','Tomate','Papa'],
+datasets: [{
+label: 'Producción (toneladas)',
+data: [12, 9, 6, 8, 10],
+backgroundColor:[
+'#4CAF50',
+'#8BC34A',
+'#CDDC39',
+'#FFC107',
+'#FF9800'
+]
+}]
+},
+options:{
+responsive:true
+}
+});
+
+let nivel=50;
+
+function regar(){
+nivel+=10;
+
+if(nivel>100){
+nivel=100;
+}
+
+document.getElementById("agua").innerText="Nivel de agua: "+nivel+"%";
+}
+
+</script>
+
+</body>
+</html>
